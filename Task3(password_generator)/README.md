@@ -33,7 +33,7 @@
 
 ### Screenshots
 ![Screenshot1](https://github.com/muhammad-haziqul-khair/CODSOFT/blob/main/Task3(password_generator)/images/s1.png)
-![Screenshot2](Task3(https://github.com/muhammad-haziqul-khair/CODSOFT/blob/main/Task3(password_generator)/images/s2.png)
+![Screenshot2](https://github.com/muhammad-haziqul-khair/CODSOFT/blob/main/Task3(password_generator)/images/s2.png)
 
 
 
