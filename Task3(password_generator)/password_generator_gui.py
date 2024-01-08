@@ -8,6 +8,8 @@ import pyperclip
 def generate_password():
     global length
     length = length_var.get()
+    if length == 0:
+        messagebox.showerror("Error", "Enter a password length")
     characters = str(string.ascii_letters+string.digits+string.punctuation)
     char_lst = []
     for char in characters:
