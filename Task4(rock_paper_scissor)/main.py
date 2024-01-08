@@ -73,4 +73,15 @@ comp_choice_frame = Frame(root,relief=RIDGE,bg="#2ecc71")
 comp_choice_frame.grid(row = 3,column=2)
 comp_choice_label = Label(comp_choice_frame,text="Bot Choice..",font = ("Ariel",15,"normal"),bg ="#2ecc71",fg="#ffffff")
 comp_choice_label.grid(row =1,column=1)
+
+#buttons
+rock_btn = Button(root,text="Rock",width = 15,height=2,font=("Arial",15,"bold"),bg ="#ffffff",fg="black")
+rock_btn.grid(row=5,column=0,padx=5,pady=10)
+
+paper_btn = Button(root,text="Paper",width = 15,height=2,font=("Arial",15,"bold"),bg ="#ffffff",fg="black")
+paper_btn.grid(row=5,column=1)
+
+scissor_btn = Button(root,text="Scissor",width = 15,height=2,font=("Arial",15,"bold"),bg ="#ffffff",fg="black")
+scissor_btn.grid(row=5,column=2)
+
 root.mainloop()
