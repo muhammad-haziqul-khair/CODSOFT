@@ -84,4 +84,9 @@ paper_btn.grid(row=5,column=1)
 scissor_btn = Button(root,text="Scissor",width = 15,height=2,font=("Arial",15,"bold"),bg ="#ffffff",fg="black")
 scissor_btn.grid(row=5,column=2)
 
+#restarts game
+restart_btn = Label(root,text="Restart",width = 15,height=2,cursor="hand2",font=("Arial",20,"underline"),bg ="#2ecc71",fg="#ffffff")
+restart_btn.grid(row=6,column=1)
+
+
 root.mainloop()
