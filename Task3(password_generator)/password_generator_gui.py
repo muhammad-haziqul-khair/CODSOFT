@@ -40,7 +40,7 @@ def copy_password():
 root = Tk()
 root.config(bg ="#2B98DC")
 root.title("Password Generator")
-root.iconbitmap("Task3(password_generator)/myicon.ico")
+root.iconbitmap("Task3(password_generator)/images/myicon.ico")
 root.geometry("600x300")
 root.resizable(False,False)
 reg = root.register(validate_input)
