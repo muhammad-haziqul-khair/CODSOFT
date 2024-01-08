@@ -17,7 +17,7 @@
 ### Features
 - **Generate Password:** Creates a random password based on the specified length.<br>
 - **Copy Password:**  Copies the generated password to the clipboard.<br>
-_ **Input Validation:** Ensures that a valid password length is entered.
+- **Input Validation:** Ensures that a valid password length is entered.
 
 ### Prerequisites
 * Python<br>
