@@ -1,6 +1,8 @@
 from tkinter import *
+from tkinter import messagebox
 import string
 import random
+import pyperclip
 
 #generates a random password
 def generate_password():
@@ -25,6 +27,13 @@ def validate_input(num):
         return True
     else:
         return False
+    
+def copy_password():
+    try:
+        pyperclip.copy(password)
+        messagebox.showinfo(root,"Text Copied to Clipboard ):")
+    except:
+        messagebox.showerror("Error","Enter the Password length!")
 
 root = Tk()
 root.config(bg ="#2B98DC")
@@ -42,8 +51,13 @@ length_var = IntVar()
 length_entry = Entry(root,width=10,font=("Arial", 20, "bold"),justify="center",bg ="white",textvariable=length_var,validate="key",validatecommand=(reg,"%P"))
 length_entry.grid(row=2,column=2,padx=10, pady=10)
 
+#button for generating password 
 btn_pswd = Button(root,text="Generate Password",width = 20,font=7,command=generate_password)
 btn_pswd.grid(row=3,column=1,padx=10, pady=10)
+
+#button to copy password
+btn_copy = Button(root,text="Copy Password",width = 20,font=7,bg="white",command=copy_password)
+btn_copy.grid(row=3,column=2,padx=10, pady=10)
 
 pswd_label = pswd_label = Label(root,text ="",font =("Arial",20,"bold"),width= 20,bg ="#2B98DC",fg="white")
 pswd_label.grid(row=4,column=1)
