@@ -62,4 +62,15 @@ win_frame.grid(row=2,column = 1,padx=10,pady=10)
 win_label = Label(win_frame,text="PLAY!",font = ("Ariel",20,"bold"),fg="#ffffff",bg ="#2ecc71")
 win_label.grid(row=1,column=1,pady=5)
 
+#user choice statement
+user_choice_frame = Frame(root,relief=RIDGE,bg="#2ecc71")
+user_choice_frame.grid(row = 3,column=0)
+user_choice_label = Label(user_choice_frame,text="Your Choice..",font = ("Ariel",15,"normal"),bg ="#2ecc71",fg="#ffffff")
+user_choice_label.grid(row =1,column=1)
+
+#computer choice statement
+comp_choice_frame = Frame(root,relief=RIDGE,bg="#2ecc71")
+comp_choice_frame.grid(row = 3,column=2)
+comp_choice_label = Label(comp_choice_frame,text="Bot Choice..",font = ("Ariel",15,"normal"),bg ="#2ecc71",fg="#ffffff")
+comp_choice_label.grid(row =1,column=1)
 root.mainloop()
