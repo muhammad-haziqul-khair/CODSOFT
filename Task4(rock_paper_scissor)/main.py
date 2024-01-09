@@ -1,5 +1,6 @@
 from tkinter import *
 from PIL import ImageTk,Image
+import random
 
 root = Tk()
 root.title("ROCK PAPER SCISSOR")
@@ -7,6 +8,63 @@ root.iconbitmap("Task4(rock_paper_scissor)/images/rps.ico")
 root.geometry("800x500")
 root.resizable(False,False)
 root.config(bg="#2ecc71")
+
+def declare_winner(user,comp):
+    global user_score, comp_score
+    if user == comp:
+        win_label.config(text="Match Tied!")
+    elif user == "rock":
+        if comp == "paper":
+            comp_score += 1
+            comp_score_label.config(text=comp_score)
+            win_label.config(text="Bot Won")
+        else:
+            user_score +=1
+            user_score_label.config(text=user_score)
+            win_label.config(text="You Won")
+    elif user == "paper":
+        if comp == "rock":
+            user_score +=1
+            user_score_label.config(text=user_score)
+            win_label.config(text="You Won")
+        else:
+            comp_score += 1
+            comp_score_label.config(text=comp_score)
+            win_label.config(text="Bot Won")
+    elif user == "scissor":
+        if comp == "paper":
+            user_score += 1
+            user_score_label.config(text=user_score)
+            win_label.config(text="You Won")
+        else:
+            comp_score +=1
+            comp_score_label.config(text=comp_score)
+            win_label.config(text="Bot Won")
+    else:
+        pass
+
+def players_turn(user_turn):
+    possible_choice =["rock","paper","scissor"]
+    comp_turn = random.choice(possible_choice)
+    if comp_turn == "rock":
+      comp_img_label.config(image=comp_rock_img)
+      comp_choice_label.config(text="Bot chose ROCK!")
+    elif comp_turn == "paper":
+       comp_img_label.config(image=paper_img)
+       comp_choice_label.config(text="Bot chose PAPER!")
+    else:
+       comp_img_label.config(image=comp_scissor_img)
+       comp_choice_label.config(text="Bot chose SCISSOR!")
+    if user_turn == "rock":
+      user_img_label.config(image=user_rock_img)
+      user_choice_label.config(text="You chose ROCK!")
+    elif user_turn == "paper":
+       user_img_label.config(image=paper_img)
+       user_choice_label.config(text="You chose PAPER!")
+    else:
+       user_img_label.config(image=user_scissor_img)
+       user_choice_label.config(text="You chose SCISSOR!")
+    declare_winner(user_turn,comp_turn)
 
 #Load Imgage
 user_rock_img = ImageTk.PhotoImage(Image.open("Task4(rock_paper_scissor)/images/rock.png"))
@@ -75,13 +133,13 @@ comp_choice_label = Label(comp_choice_frame,text="Bot Choice..",font = ("Ariel",
 comp_choice_label.grid(row =1,column=1)
 
 #buttons
-rock_btn = Button(root,text="Rock",width = 15,height=2,font=("Arial",15,"bold"),bg ="#ffffff",fg="black")
+rock_btn = Button(root,text="Rock",width = 15,height=2,font=("Arial",15,"bold"),bg ="#ffffff",fg="black",command=lambda:players_turn("rock"))
 rock_btn.grid(row=5,column=0,padx=5,pady=10)
 
-paper_btn = Button(root,text="Paper",width = 15,height=2,font=("Arial",15,"bold"),bg ="#ffffff",fg="black")
+paper_btn = Button(root,text="Paper",width = 15,height=2,font=("Arial",15,"bold"),bg ="#ffffff",fg="black",command=lambda:players_turn("paper"))
 paper_btn.grid(row=5,column=1)
 
-scissor_btn = Button(root,text="Scissor",width = 15,height=2,font=("Arial",15,"bold"),bg ="#ffffff",fg="black")
+scissor_btn = Button(root,text="Scissor",width = 15,height=2,font=("Arial",15,"bold"),bg ="#ffffff",fg="black",command=lambda:players_turn("scissor"))
 scissor_btn.grid(row=5,column=2)
 
 #restarts game
