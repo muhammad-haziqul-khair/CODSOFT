@@ -9,6 +9,21 @@ root.geometry("800x500")
 root.resizable(False,False)
 root.config(bg="#2ecc71")
 
+def restart_game():
+    global user_score,comp_score
+    user_score = 0
+    comp_score = 0
+    user_score_label.config(text=user_score)
+    comp_score_label.config(text=comp_score)
+    win_label.config(text="PLAY!")
+    user_choice_label.config(text="Your Choice..")
+    comp_choice_label.config(text="Bot Choice..")
+    user_img_label.config(image=user_rock_img)
+    comp_img_label.config(image=comp_rock_img)
+
+def restart_clicked(event):
+    restart_game()
+
 def declare_winner(user,comp):
     global user_score, comp_score
     if user == comp:
@@ -145,6 +160,7 @@ scissor_btn.grid(row=5,column=2)
 #restarts game
 restart_btn = Label(root,text="Restart",width = 15,height=2,cursor="hand2",font=("Arial",20,"underline"),bg ="#2ecc71",fg="#ffffff")
 restart_btn.grid(row=6,column=1)
+restart_btn.bind("<Button-1>",restart_clicked)
 
 
 root.mainloop()
