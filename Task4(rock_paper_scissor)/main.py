@@ -1,7 +1,15 @@
 from tkinter import *
-from tkinter import messagebox
+from tkinter import messagebox,simpledialog
 from PIL import ImageTk,Image
 import random
+
+def ask_username():
+    global user_name
+    user_name=simpledialog.askstring("Input","Enter your name: ")
+    if user_name:
+        user_name_label.config(text=user_name)
+    else:
+        user_name_label.config(text="User")
 
 def restart_game():
     global user_score,comp_score
@@ -17,6 +25,7 @@ def restart_game():
 
 def restart_clicked(event):
     restart_game()
+    messagebox.showwarning("Warning","Game is restarted!")
 
 def declare_winner(user,comp):
     global user_score, comp_score
@@ -85,7 +94,7 @@ def check_game_over():
         restart_game()
     else:
         pass
-    
+
 root = Tk()
 root.title("ROCK PAPER SCISSOR")
 root.iconbitmap("Task4(rock_paper_scissor)/images/rps.ico")
@@ -93,26 +102,12 @@ root.geometry("800x500")
 root.resizable(False,False)
 root.config(bg="#2ecc71")
 
-
-
 #Load Imgage
 user_rock_img = ImageTk.PhotoImage(Image.open("Task4(rock_paper_scissor)/images/rock.png"))
 comp_rock_img = ImageTk.PhotoImage(Image.open("Task4(rock_paper_scissor)/images/comp_rock.png"))
 paper_img = ImageTk.PhotoImage(Image.open("Task4(rock_paper_scissor)/images/paper.png"))
 user_scissor_img = ImageTk.PhotoImage(Image.open("Task4(rock_paper_scissor)/images/scissor.png"))
 comp_scissor_img = ImageTk.PhotoImage(Image.open("Task4(rock_paper_scissor)/images/comp_scissor.png"))
-
-#Username
-user_name_frame = Frame(root,relief=RIDGE,bg="#2ecc71")
-user_name_frame.grid(row = 0,column=0,padx=10,pady=10)
-user_name_label = Label(user_name_frame,text="User",font = ("Ariel",20,"bold"),bg ="#2ecc71",fg="#ffffff")
-user_name_label.grid(row =1,column=1)
-
-# Computer Name
-comp_name_frame = Frame(root,relief=RIDGE,bg="#2ecc71")
-comp_name_frame.grid(row = 0,column=2,padx=10,pady=10)
-comp_name_label = Label(comp_name_frame,text="Computer",font = ("Ariel",20,"bold"),bg ="#2ecc71",fg="#ffffff")
-comp_name_label.grid(row =1,column=1)
 
 # User Choice Image 
 user_img_canvas = Canvas(root,relief=RIDGE,bg = "#2ecc71",width =300)
@@ -176,5 +171,17 @@ restart_btn = Label(root,text="Restart",width = 15,height=2,cursor="hand2",font=
 restart_btn.grid(row=6,column=1)
 restart_btn.bind("<Button-1>",restart_clicked)
 
+#Username
+user_name_frame = Frame(root,relief=RIDGE,bg="#2ecc71")
+user_name_frame.grid(row = 0,column=0,padx=10,pady=10)
+user_name_label = Label(user_name_frame,text="",font = ("Ariel",20,"bold"),bg ="#2ecc71",fg="#ffffff")
+user_name_label.grid(row =1,column=1)
+ask_username()
+
+# Computer Name
+comp_name_frame = Frame(root,relief=RIDGE,bg="#2ecc71")
+comp_name_frame.grid(row = 0,column=2,padx=10,pady=10)
+comp_name_label = Label(comp_name_frame,text="Computer",font = ("Ariel",20,"bold"),bg ="#2ecc71",fg="#ffffff")
+comp_name_label.grid(row =1,column=1)
 
 root.mainloop()
