@@ -1,13 +1,7 @@
 from tkinter import *
+from tkinter import messagebox
 from PIL import ImageTk,Image
 import random
-
-root = Tk()
-root.title("ROCK PAPER SCISSOR")
-root.iconbitmap("Task4(rock_paper_scissor)/images/rps.ico")
-root.geometry("800x500")
-root.resizable(False,False)
-root.config(bg="#2ecc71")
 
 def restart_game():
     global user_score,comp_score
@@ -80,6 +74,26 @@ def players_turn(user_turn):
        user_img_label.config(image=user_scissor_img)
        user_choice_label.config(text="You chose SCISSOR!")
     declare_winner(user_turn,comp_turn)
+    check_game_over()
+
+def check_game_over():
+    if user_score == 5:
+        messagebox.showinfo("Info","You Won, Game is Restarted")
+        restart_game()
+    elif comp_score == 5:
+        messagebox.showinfo("Info","Bot Won, Game is Restarted")
+        restart_game()
+    else:
+        pass
+    
+root = Tk()
+root.title("ROCK PAPER SCISSOR")
+root.iconbitmap("Task4(rock_paper_scissor)/images/rps.ico")
+root.geometry("800x500")
+root.resizable(False,False)
+root.config(bg="#2ecc71")
+
+
 
 #Load Imgage
 user_rock_img = ImageTk.PhotoImage(Image.open("Task4(rock_paper_scissor)/images/rock.png"))
