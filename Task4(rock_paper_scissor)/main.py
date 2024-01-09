@@ -85,7 +85,7 @@ def players_turn(user_turn):
     declare_winner(user_turn,comp_turn)
     check_game_over()
 
-def check_game_over():
+def check_game_over(): #set the number of rounds accordingly
     if user_score == 5:
         messagebox.showinfo("Info","You Won, Game is Restarted")
         restart_game()
