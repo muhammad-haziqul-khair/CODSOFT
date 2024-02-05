@@ -25,3 +25,15 @@ def add_contact(n,num,e,a):
         print("Data added")
     except Exception as e:
         print(f"Error in Adding Contact: ({e})")
+
+def search_contact(attribute,value):
+        try:
+            search_query = f"SELECT id from contacts WHERE {attribute} = '{value}'"
+            cursor.execute(search_query)
+            result = cursor.fetchone()
+            if result:
+                return result[0]
+            else:
+                return None
+        except Exception as e:
+            print(f"Error searching for Contact: ({e})")
