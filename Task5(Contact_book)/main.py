@@ -37,3 +37,21 @@ def search_contact(attribute,value):
                 return None
         except Exception as e:
             print(f"Error searching for Contact: ({e})")
+
+def display_contacts():
+    try:
+        cursor.execute("SELECT * FROM contacts")
+        contacts = cursor.fetchall()
+        if contacts:
+            print("Contacts:")
+            for contact in contacts:
+                name = contact[1]
+                number = contact[2]
+                email = contact[3]
+                address = contact[4]
+                print("Contact found!")
+                print(f"{name}\t{number}\t{email}\t{address}")
+        else:
+            print("No contacts found.")
+    except sqlite3.Error as e:
+        print("Error:", e)
