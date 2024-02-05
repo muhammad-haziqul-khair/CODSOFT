@@ -55,3 +55,22 @@ def display_contacts():
             print("No contacts found.")
     except sqlite3.Error as e:
         print("Error:", e)
+
+def delete_contact():
+    try:
+            attribute = input("Enter Attribute(name,number,email,address): ").lower()
+            while attribute not in ["name","number","email","address"]:
+                print("Enter valid input: ")
+                attribute = input("Enter Attribute(name,number,email,address): ").lower()
+            value = input(f"Enter {attribute}: ").lower()
+            contact_id = search_contact(attribute,value)
+            if contact_id:
+                delete_query = f"DELETE FROM contacts WHERE id = {contact_id}"
+                cursor.execute(delete_query)
+                connection.commit()
+                print("Contact deleted successfully")
+            else:
+                print("No contact Found!")
+        
+    except Exception as e:
+        print("Error deleting contact:", e)
