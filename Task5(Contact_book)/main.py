@@ -26,17 +26,35 @@ def add_contact(n,num,e,a):
     except Exception as e:
         print(f"Error in Adding Contact: ({e})")
 
-def search_contact(attribute,value):
+def search_contact(attribute,value,return_columns = None):
         try:
-            search_query = f"SELECT id from contacts WHERE {attribute} = '{value}'"
+            if return_columns:
+                columns = ", ".join(return_columns)
+            else:
+                columns = "*"
+            search_query = f"SELECT {columns} from contacts WHERE {attribute} = '{value}'"
             cursor.execute(search_query)
             result = cursor.fetchone()
             if result:
-                return result[0]
+                if return_columns and len(return_columns) == 1:
+                    return result[0]
+                else:
+                    return result
             else:
                 return None
         except Exception as e:
             print(f"Error searching for Contact: ({e})")
+
+def update_contact(contact_id,new_value_lst,new_attribute_lst):
+    try:
+        set_clause = ", ".join([f"{new_attribute} = ?" for new_attribute in new_attribute_lst])
+        update_query = f"UPDATE contacts SET {set_clause} WHERE id = ?"
+        new_value_lst.append(contact_id) 
+        cursor.execute(update_query, new_value_lst)
+        connection.commit()
+        print("Contact Updated!")
+    except Exception as e:
+        print(f"Error in updating contact: {e}")
 
 def display_contacts():
     try:
@@ -74,3 +92,22 @@ def delete_contact():
         
     except Exception as e:
         print("Error deleting contact:", e)
+
+def search_contact(attribute,value,return_columns = None):
+        try:
+            if return_columns:
+                columns = ", ".join(return_columns)
+            else:
+                columns = "*"
+            search_query = f"SELECT {columns} from contacts WHERE {attribute} = '{value}'"
+            cursor.execute(search_query)
+            result = cursor.fetchone()
+            if result:
+                if return_columns and len(return_columns) == 1:
+                    return result[0]
+                else:
+                    return result
+            else:
+                return None
+        except Exception as e:
+            print(f"Error searching for Contact: ({e})")
